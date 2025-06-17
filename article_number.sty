@@ -1,0 +1,13 @@
+\usepackage{xparse} % for NewDocumentCommand
+
+\NewDocumentCommand{\LawArticleNumber}{m >{\SplitList{.}} o}{%
+  \IfNoValueTF{#2}{% if 第2引数（枝番）が存在しないとき（引数が1つのとき）
+    \textgt{第\textsf{#1}条}
+  }{% else - 第2引数（枝番）が存在するとき（引数が2つのとき）
+    \textgt{第\textsf{#1}条{\ProcessList{#2}{\LawArticleNumberSub}}}
+  }
+}
+
+% ---- private command ----
+
+\newcommand{\LawArticleNumberSub}[1]{の\textsf{#1}}
