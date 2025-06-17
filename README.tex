@@ -1,0 +1,26 @@
+\documentclass[oneside,10pt,a4paper]{jsarticle}
+
+\usepackage[dvips]{graphicx}
+\usepackage[dvips]{graphicx,color}
+\usepackage{txfonts} % textsf を正しく表示するため
+
+\usepackage{article_number}
+
+\title{nard-tex-law-package}
+\author{Fujita Shu}
+
+\begin{document}
+  \maketitle
+
+  \section{nard-tex-law-package/article\_number - 条文番号のコマンド}
+
+  \verb|nard-tex-law-package/article_number| ファイルを読み込むと、
+  条文番号を表示するための\\
+  \verb|\LawArticleNumber| コマンドが使用できる。
+
+  \begin{itemize}
+    \item \verb|\LawArticleNumber{1}| - \LawArticleNumber{1}
+    \item \verb|\LawArticleNumber{2}[1]| - \LawArticleNumber{2}[1]
+    \item \verb|\LawArticleNumber{3}[1.1]| - \LawArticleNumber{3}[1.1]
+  \end{itemize}
+\end{document}
