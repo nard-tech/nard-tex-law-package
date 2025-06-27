@@ -1,0 +1,17 @@
+% 法律の条文をわかりやすく表示するための便利なコマンド
+% law_utils.sty
+% https://github.com/nard-tech/nard-tex-law-package
+
+\newcommand{\ParenthesesPhrase}[1]{{\footnotesize （#1）}} % （…。）
+\newcommand{\ParenthesesWord}[1]{{\footnotesize （#1）}} % （…）
+\newcommand{\LawDef}[1]{\textgt{#1}} % 以下「…」という
+
+% （注）
+\newcommand{\LawRemark}{%
+\textgt{（注）}\\[-9pt]
+}
+
+% （例）
+\newcommand{\LawExample}[1]{%
+\textgt{（例\textsf{{#1}}）}\\[-9pt]
+}
