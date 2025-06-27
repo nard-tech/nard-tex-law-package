@@ -6,8 +6,10 @@
 \usepackage[dvips]{graphicx}
 \usepackage[dvips]{graphicx,color}
 \usepackage{txfonts} % textsf を正しく表示するため
+\usepackage{ascmac} % itembox を使いたいため
 
 \usepackage{article_number}
+\usepackage{headers_ja}
 
 \title{nard-tex-law-package}
 \author{Fujita Shu}
@@ -25,5 +27,194 @@
     \item \verb|\LawArticleNumber{1}| - \LawArticleNumber{1}
     \item \verb|\LawArticleNumber{2}<1>| - \LawArticleNumber{2}<1>
     \item \verb|\LawArticleNumber{3}<1.1>| - \LawArticleNumber{3}<1.1>
+  \end{itemize}
+
+  \newpage
+
+  \section{headers\_ja - 条文のコマンド}
+
+  \verb|headers_ja| パッケージを読み込むと、
+  条文の冒頭の番号、内容を表示するためのコマンドが使用できる。
+
+  \subsection{LawArticle}
+
+  \begin{itemize}
+    \item \verb|\LawArticle{条文番号}|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawArticle{1}
+\begin{quote}
+  これは第1条の内容です。
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{1}
+        \begin{quote}
+          これは第1条の内容です。
+        \end{quote}
+      \end{itembox}
+    \item \verb|\LawArticle{条文番号}<枝番>|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawArticle{1}<2>
+\begin{quote}
+  これは第1条の2の内容です。
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{1}<2>
+        \begin{quote}
+          これは第1条の2の内容です。
+        \end{quote}
+      \end{itembox}
+    \item \verb|\LawArticle{条文番号}[内容]|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawArticle{2}[定義]
+\begin{quote}
+  これは第2条の内容です。
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{2}[定義]
+        \begin{quote}
+          これは第2条の内容です。
+        \end{quote}
+      \end{itembox}
+    %
+    \newpage
+    %
+    \item \verb|\LawArticle{条文番号}<枝番>[内容]|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawArticle{2}<2>[定義]
+\begin{quote}
+  これは第2条の2の内容です。
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{2}<2>[定義]
+        \begin{quote}
+          これは第2条の2の内容です。
+        \end{quote}
+      \end{itembox}
+    %
+  \end{itemize}
+
+  \subsection{DeletedLawArticle}
+
+  \begin{itemize}
+    \item \verb|\DeletedLawArticle{条文番号}|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\DeletedLawArticle{3}
+\begin{quote}
+  削除
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \DeletedLawArticle{3}
+        \begin{quote}
+          削除
+        \end{quote}
+      \end{itembox}
+    \item \verb|\DeletedLawArticle{条文番号}<枝番>|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\DeletedLawArticle{3}<2>
+\begin{quote}
+  削除
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \DeletedLawArticle{3}<2>
+        \begin{quote}
+          削除
+        \end{quote}
+      \end{itembox}
+    %
+    \newpage
+    %
+    \item \verb|\DeletedLawArticle{条文番号}[内容]|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\DeletedLawArticle{4}[定義]
+\begin{quote}
+  削除
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{4}[定義]
+        \begin{quote}
+          削除
+        \end{quote}
+      \end{itembox}
+    \item \verb|\LawArticle{条文番号}<枝番>[内容]|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawArticle{4}<2>[定義]
+\begin{quote}
+  削除
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{4}<2>[定義]
+        \begin{quote}
+          削除
+        \end{quote}
+      \end{itembox}
+    %
+  \end{itemize}
+
+  \newpage
+
+  \subsection{LawParagraph}
+
+  \begin{itemize}
+    \item \verb|\LawParagraph{項番号}|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawArticle{5}[定義]
+\begin{quote}
+  これは第5条の内容です。
+  \LawParagraph{2}
+  \begin{quote}
+    これは第5条第2項の内容です。
+  \end{quote}
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawArticle{5}[定義]
+        \begin{quote}
+          これは第5条の内容です。
+          \LawParagraph{2}
+          \begin{quote}
+            これは第5条第2項の内容です。
+          \end{quote}
+        \end{quote}
+      \end{itembox}
+    %
+  \end{itemize}
+
+  \subsection{LawSubsection}
+
+  \begin{itemize}
+    \item \verb|\LawSubsection{款番号}{内容}|
+      \begin{itembox}[l]{コード}
+        {\footnotesize\begin{verbatim}
+\LawSubsection{6}{款の内容}
+\LawArticle{100}[総則]
+\begin{quote}
+  これは第100条の内容です。
+\end{quote}\end{verbatim}}
+      \end{itembox}
+      \begin{itembox}[l]{表示内容}
+        \LawSubsection{6}{款の内容}
+        \LawArticle{100}[総則]
+        \begin{quote}
+          これは第100条の内容です。
+        \end{quote}
+      \end{itembox}
+    %
   \end{itemize}
 \end{document}

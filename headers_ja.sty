@@ -1,0 +1,48 @@
+% 法律 見出し
+% headers_ja.sty
+% https://github.com/nard-tech/nard-tex-law-package
+\usepackage{xparse} % for NewDocumentCommand
+\usepackage{./article_number}
+
+% 条文
+\NewDocumentCommand{\LawArticle}{m D<>{} o}{%
+  \LawArticleBase{
+    {\color[rgb]{0.4,0.4,0.4}{■}}}{% ロゴ
+    #1}<% 条文番号
+    #2>[% 枝番
+    #3]% 内容
+}
+
+% 削除された条文
+\NewDocumentCommand{\DeletedLawArticle}{m D<>{} o}{%
+  \LawArticleBase{
+    {\color[rgb]{0.8,0.8,0.8}{■}}}{% ロゴ
+    #1}<% 条文番号
+    #2>[% 枝番
+    #3]% 内容
+}
+
+% 項
+\newcommand{\LawParagraph}[1]{%
+\qquad \\
+\textsf{#1} \\[-24pt]
+}
+
+% 款
+\newcommand{\LawSubsection}[2]{%
+\quad \\[-6pt]
+\textgt{第{\textsf{#1}}款 \, {#2}} \\[12pt]
+}
+
+% -------- private commands
+
+\NewDocumentCommand{\LawArticleBase}{m m D<>{} o}{%
+  \IfNoValueTF{#4}{% if 第3引数（内容）が存在しないとき（引数が2つのとき）
+    % 何もしない
+  }{% else - 第3引数（内容）が存在するとき（引数が3つのとき）
+    % 第2引数を条文番号、第3引数を内容とする
+    （{#4}）\\[3pt]% 内容を表示して改行
+  }
+  #1\,% ロゴ
+  \LawArticleNumber{#2}<#3> % 条文番号+枝番
+}
